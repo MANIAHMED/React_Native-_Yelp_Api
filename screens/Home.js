@@ -1,11 +1,15 @@
-import React from 'react'
+import React,{useState} from 'react'
 import { View, Text, SafeAreaView,StyleSheet, ScrollView } from 'react-native'
 import Categories from '../components/Categories'
 import HeaderTabs from '../components/HeaderTabs'
-import RestaurantItem from '../components/RestaurantItem'
+import RestaurantItems, { localRestaurants } from '../components/RestaurantItems'
 import SearchBar from '../components/SearchBar'
 
+
+
 export default function Home() {
+
+    const [restaurantData,setRestaurantData] = useState(localRestaurants)
     return (
         <SafeAreaView style={{flex: 1 }}>
             <View style={styles.top}>
@@ -16,9 +20,8 @@ export default function Home() {
                 </View>
                 <ScrollView showsVerticalScrollIndicator={false}>
                 <Categories />
-                <RestaurantItem />
-                <RestaurantItem />
-                <RestaurantItem />
+                <RestaurantItems restaurantData={restaurantData} />
+            
                 </ScrollView>
 
             </View>
